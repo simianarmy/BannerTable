@@ -1,0 +1,479 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A2FA32D1426E012003E58E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA32C1426E012003E58E0 /* UIKit.framework */; };
+		9A2FA32F1426E012003E58E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA32E1426E012003E58E0 /* Foundation.framework */; };
+		9A2FA3311426E012003E58E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA3301426E012003E58E0 /* CoreGraphics.framework */; };
+		9A2FA3371426E012003E58E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A2FA3351426E012003E58E0 /* InfoPlist.strings */; };
+		9A2FA3391426E012003E58E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2FA3381426E012003E58E0 /* main.m */; };
+		9A2FA33D1426E012003E58E0 /* BannerViewAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2FA33C1426E012003E58E0 /* BannerViewAppDelegate.m */; };
+		9A2FA3411426E012003E58E0 /* BannerViewAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2FA3401426E012003E58E0 /* BannerViewAppDelegate_iPhone.m */; };
+		9A2FA3441426E012003E58E0 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2FA3421426E012003E58E0 /* MainWindow_iPhone.xib */; };
+		9A2FA3481426E012003E58E0 /* BannerViewAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2FA3471426E012003E58E0 /* BannerViewAppDelegate_iPad.m */; };
+		9A2FA34B1426E012003E58E0 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2FA3491426E012003E58E0 /* MainWindow_iPad.xib */; };
+		9A2FA3531426E013003E58E0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA3521426E012003E58E0 /* SenTestingKit.framework */; };
+		9A2FA3541426E013003E58E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA32C1426E012003E58E0 /* UIKit.framework */; };
+		9A2FA3551426E013003E58E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA32E1426E012003E58E0 /* Foundation.framework */; };
+		9A2FA3561426E013003E58E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA3301426E012003E58E0 /* CoreGraphics.framework */; };
+		9A2FA35E1426E013003E58E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A2FA35C1426E013003E58E0 /* InfoPlist.strings */; };
+		9A2FA3601426E013003E58E0 /* BannerViewTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 9A2FA35F1426E013003E58E0 /* BannerViewTests.h */; };
+		9A2FA3621426E013003E58E0 /* BannerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2FA3611426E013003E58E0 /* BannerViewTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9A2FA3571426E013003E58E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A2FA31F1426E011003E58E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A2FA3271426E012003E58E0;
+			remoteInfo = BannerView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9A2FA3281426E012003E58E0 /* BannerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BannerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2FA32C1426E012003E58E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9A2FA32E1426E012003E58E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9A2FA3301426E012003E58E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9A2FA3341426E012003E58E0 /* BannerView-Info.plist */ = {isa = PBXFileReference; path = "BannerView-Info.plist"; sourceTree = "<group>"; };
+		9A2FA3361426E012003E58E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9A2FA3381426E012003E58E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9A2FA33A1426E012003E58E0 /* BannerView-Prefix.pch */ = {isa = PBXFileReference; path = "BannerView-Prefix.pch"; sourceTree = "<group>"; };
+		9A2FA33B1426E012003E58E0 /* BannerViewAppDelegate.h */ = {isa = PBXFileReference; path = BannerViewAppDelegate.h; sourceTree = "<group>"; };
+		9A2FA33C1426E012003E58E0 /* BannerViewAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerViewAppDelegate.m; sourceTree = "<group>"; };
+		9A2FA33F1426E012003E58E0 /* BannerViewAppDelegate_iPhone.h */ = {isa = PBXFileReference; name = BannerViewAppDelegate_iPhone.h; path = iPhone/BannerViewAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		9A2FA3401426E012003E58E0 /* BannerViewAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BannerViewAppDelegate_iPhone.m; path = iPhone/BannerViewAppDelegate_iPhone.m; sourceTree = "<group>"; };
+		9A2FA3431426E012003E58E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
+		9A2FA3461426E012003E58E0 /* BannerViewAppDelegate_iPad.h */ = {isa = PBXFileReference; name = BannerViewAppDelegate_iPad.h; path = iPad/BannerViewAppDelegate_iPad.h; sourceTree = "<group>"; };
+		9A2FA3471426E012003E58E0 /* BannerViewAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BannerViewAppDelegate_iPad.m; path = iPad/BannerViewAppDelegate_iPad.m; sourceTree = "<group>"; };
+		9A2FA34A1426E012003E58E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
+		9A2FA3511426E012003E58E0 /* BannerViewTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BannerViewTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2FA3521426E012003E58E0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		9A2FA35B1426E013003E58E0 /* BannerViewTests-Info.plist */ = {isa = PBXFileReference; path = "BannerViewTests-Info.plist"; sourceTree = "<group>"; };
+		9A2FA35D1426E013003E58E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9A2FA35F1426E013003E58E0 /* BannerViewTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerViewTests.h; sourceTree = "<group>"; };
+		9A2FA3611426E013003E58E0 /* BannerViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerViewTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A2FA3251426E012003E58E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A2FA32D1426E012003E58E0 /* UIKit.framework in Frameworks */,
+				9A2FA32F1426E012003E58E0 /* Foundation.framework in Frameworks */,
+				9A2FA3311426E012003E58E0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A2FA34D1426E012003E58E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A2FA3531426E013003E58E0 /* SenTestingKit.framework in Frameworks */,
+				9A2FA3541426E013003E58E0 /* UIKit.framework in Frameworks */,
+				9A2FA3551426E013003E58E0 /* Foundation.framework in Frameworks */,
+				9A2FA3561426E013003E58E0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9A2FA31D1426E011003E58E0 = {
+			isa = PBXGroup;
+			children = (
+				9A2FA3321426E012003E58E0 /* BannerView */,
+				9A2FA3591426E013003E58E0 /* BannerViewTests */,
+				9A2FA32B1426E012003E58E0 /* Frameworks */,
+				9A2FA3291426E012003E58E0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9A2FA3291426E012003E58E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A2FA3281426E012003E58E0 /* BannerView.app */,
+				9A2FA3511426E012003E58E0 /* BannerViewTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A2FA32B1426E012003E58E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A2FA32C1426E012003E58E0 /* UIKit.framework */,
+				9A2FA32E1426E012003E58E0 /* Foundation.framework */,
+				9A2FA3301426E012003E58E0 /* CoreGraphics.framework */,
+				9A2FA3521426E012003E58E0 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A2FA3321426E012003E58E0 /* BannerView */ = {
+			isa = PBXGroup;
+			children = (
+				9A2FA33B1426E012003E58E0 /* BannerViewAppDelegate.h */,
+				9A2FA33C1426E012003E58E0 /* BannerViewAppDelegate.m */,
+				9A2FA33E1426E012003E58E0 /* iPhone */,
+				9A2FA3451426E012003E58E0 /* iPad */,
+				9A2FA3331426E012003E58E0 /* Supporting Files */,
+			);
+			path = BannerView;
+			sourceTree = "<group>";
+		};
+		9A2FA3331426E012003E58E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A2FA3341426E012003E58E0 /* BannerView-Info.plist */,
+				9A2FA3351426E012003E58E0 /* InfoPlist.strings */,
+				9A2FA3381426E012003E58E0 /* main.m */,
+				9A2FA33A1426E012003E58E0 /* BannerView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9A2FA33E1426E012003E58E0 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				9A2FA33F1426E012003E58E0 /* BannerViewAppDelegate_iPhone.h */,
+				9A2FA3401426E012003E58E0 /* BannerViewAppDelegate_iPhone.m */,
+				9A2FA3421426E012003E58E0 /* MainWindow_iPhone.xib */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		9A2FA3451426E012003E58E0 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				9A2FA3461426E012003E58E0 /* BannerViewAppDelegate_iPad.h */,
+				9A2FA3471426E012003E58E0 /* BannerViewAppDelegate_iPad.m */,
+				9A2FA3491426E012003E58E0 /* MainWindow_iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		9A2FA3591426E013003E58E0 /* BannerViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				9A2FA35F1426E013003E58E0 /* BannerViewTests.h */,
+				9A2FA3611426E013003E58E0 /* BannerViewTests.m */,
+				9A2FA35A1426E013003E58E0 /* Supporting Files */,
+			);
+			path = BannerViewTests;
+			sourceTree = "<group>";
+		};
+		9A2FA35A1426E013003E58E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9A2FA35B1426E013003E58E0 /* BannerViewTests-Info.plist */,
+				9A2FA35C1426E013003E58E0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A2FA3271426E012003E58E0 /* BannerView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A2FA3651426E013003E58E0 /* Build configuration list for PBXNativeTarget "BannerView" */;
+			buildPhases = (
+				9A2FA3241426E012003E58E0 /* Sources */,
+				9A2FA3251426E012003E58E0 /* Frameworks */,
+				9A2FA3261426E012003E58E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BannerView;
+			productName = BannerView;
+			productReference = 9A2FA3281426E012003E58E0 /* BannerView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9A2FA3501426E012003E58E0 /* BannerViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A2FA3681426E013003E58E0 /* Build configuration list for PBXNativeTarget "BannerViewTests" */;
+			buildPhases = (
+				9A2FA34C1426E012003E58E0 /* Sources */,
+				9A2FA34D1426E012003E58E0 /* Frameworks */,
+				9A2FA34E1426E012003E58E0 /* Resources */,
+				9A2FA34F1426E012003E58E0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A2FA3581426E013003E58E0 /* PBXTargetDependency */,
+			);
+			name = BannerViewTests;
+			productName = BannerViewTests;
+			productReference = 9A2FA3511426E012003E58E0 /* BannerViewTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A2FA31F1426E011003E58E0 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 9A2FA3221426E011003E58E0 /* Build configuration list for PBXProject "BannerView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9A2FA31D1426E011003E58E0;
+			productRefGroup = 9A2FA3291426E012003E58E0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A2FA3271426E012003E58E0 /* BannerView */,
+				9A2FA3501426E012003E58E0 /* BannerViewTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A2FA3261426E012003E58E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A2FA3371426E012003E58E0 /* InfoPlist.strings in Resources */,
+				9A2FA3441426E012003E58E0 /* MainWindow_iPhone.xib in Resources */,
+				9A2FA34B1426E012003E58E0 /* MainWindow_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A2FA34E1426E012003E58E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A2FA35E1426E013003E58E0 /* InfoPlist.strings in Resources */,
+				9A2FA3601426E013003E58E0 /* BannerViewTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9A2FA34F1426E012003E58E0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A2FA3241426E012003E58E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A2FA3391426E012003E58E0 /* main.m in Sources */,
+				9A2FA33D1426E012003E58E0 /* BannerViewAppDelegate.m in Sources */,
+				9A2FA3411426E012003E58E0 /* BannerViewAppDelegate_iPhone.m in Sources */,
+				9A2FA3481426E012003E58E0 /* BannerViewAppDelegate_iPad.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A2FA34C1426E012003E58E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A2FA3621426E013003E58E0 /* BannerViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9A2FA3581426E013003E58E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A2FA3271426E012003E58E0 /* BannerView */;
+			targetProxy = 9A2FA3571426E013003E58E0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9A2FA3351426E012003E58E0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A2FA3361426E012003E58E0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9A2FA3421426E012003E58E0 /* MainWindow_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A2FA3431426E012003E58E0 /* en */,
+			);
+			name = MainWindow_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		9A2FA3491426E012003E58E0 /* MainWindow_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A2FA34A1426E012003E58E0 /* en */,
+			);
+			name = MainWindow_iPad.xib;
+			sourceTree = "<group>";
+		};
+		9A2FA35C1426E013003E58E0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A2FA35D1426E013003E58E0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9A2FA3631426E013003E58E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9A2FA3641426E013003E58E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9A2FA3661426E013003E58E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BannerView/BannerView-Prefix.pch";
+				INFOPLIST_FILE = "BannerView/BannerView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9A2FA3671426E013003E58E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BannerView/BannerView-Prefix.pch";
+				INFOPLIST_FILE = "BannerView/BannerView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9A2FA3691426E013003E58E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BannerView.app/BannerView";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BannerView/BannerView-Prefix.pch";
+				INFOPLIST_FILE = "BannerViewTests/BannerViewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		9A2FA36A1426E013003E58E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BannerView.app/BannerView";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BannerView/BannerView-Prefix.pch";
+				INFOPLIST_FILE = "BannerViewTests/BannerViewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A2FA3221426E011003E58E0 /* Build configuration list for PBXProject "BannerView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A2FA3631426E013003E58E0 /* Debug */,
+				9A2FA3641426E013003E58E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A2FA3651426E013003E58E0 /* Build configuration list for PBXNativeTarget "BannerView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A2FA3661426E013003E58E0 /* Debug */,
+				9A2FA3671426E013003E58E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9A2FA3681426E013003E58E0 /* Build configuration list for PBXNativeTarget "BannerViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A2FA3691426E013003E58E0 /* Debug */,
+				9A2FA36A1426E013003E58E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A2FA31F1426E011003E58E0 /* Project object */;
+}
