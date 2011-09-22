@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *AppDataDownloadCompleted;
+
 @interface BannerViewAppDelegate : NSObject <UIApplicationDelegate>
+{
+
+}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 

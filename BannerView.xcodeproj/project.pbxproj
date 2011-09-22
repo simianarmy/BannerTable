@@ -24,6 +24,11 @@
 		9A2FA35E1426E013003E58E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A2FA35C1426E013003E58E0 /* InfoPlist.strings */; };
 		9A2FA3601426E013003E58E0 /* BannerViewTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 9A2FA35F1426E013003E58E0 /* BannerViewTests.h */; };
 		9A2FA3621426E013003E58E0 /* BannerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2FA3611426E013003E58E0 /* BannerViewTests.m */; };
+		9A2FA36D1426E1FF003E58E0 /* BannerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2FA36C1426E1FF003E58E0 /* BannerTableViewController.m */; };
+		9A93511614284DF50028651F /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A93511514284DF50028651F /* Banner.m */; };
+		9A9351261429A24B0028651F /* IconDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9351251429A24B0028651F /* IconDownloader.m */; };
+		9A93512A1429A5210028651F /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9351291429A5210028651F /* Placeholder.png */; };
+		9A93512D142AE63E0028651F /* BannerXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A93512C142AE63E0028651F /* BannerXMLParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,24 +46,33 @@
 		9A2FA32C1426E012003E58E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9A2FA32E1426E012003E58E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9A2FA3301426E012003E58E0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9A2FA3341426E012003E58E0 /* BannerView-Info.plist */ = {isa = PBXFileReference; path = "BannerView-Info.plist"; sourceTree = "<group>"; };
+		9A2FA3341426E012003E58E0 /* BannerView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BannerView-Info.plist"; sourceTree = "<group>"; };
 		9A2FA3361426E012003E58E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A2FA3381426E012003E58E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9A2FA33A1426E012003E58E0 /* BannerView-Prefix.pch */ = {isa = PBXFileReference; path = "BannerView-Prefix.pch"; sourceTree = "<group>"; };
-		9A2FA33B1426E012003E58E0 /* BannerViewAppDelegate.h */ = {isa = PBXFileReference; path = BannerViewAppDelegate.h; sourceTree = "<group>"; };
+		9A2FA33A1426E012003E58E0 /* BannerView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BannerView-Prefix.pch"; sourceTree = "<group>"; };
+		9A2FA33B1426E012003E58E0 /* BannerViewAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerViewAppDelegate.h; sourceTree = "<group>"; };
 		9A2FA33C1426E012003E58E0 /* BannerViewAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerViewAppDelegate.m; sourceTree = "<group>"; };
-		9A2FA33F1426E012003E58E0 /* BannerViewAppDelegate_iPhone.h */ = {isa = PBXFileReference; name = BannerViewAppDelegate_iPhone.h; path = iPhone/BannerViewAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		9A2FA33F1426E012003E58E0 /* BannerViewAppDelegate_iPhone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BannerViewAppDelegate_iPhone.h; path = iPhone/BannerViewAppDelegate_iPhone.h; sourceTree = "<group>"; };
 		9A2FA3401426E012003E58E0 /* BannerViewAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BannerViewAppDelegate_iPhone.m; path = iPhone/BannerViewAppDelegate_iPhone.m; sourceTree = "<group>"; };
 		9A2FA3431426E012003E58E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
-		9A2FA3461426E012003E58E0 /* BannerViewAppDelegate_iPad.h */ = {isa = PBXFileReference; name = BannerViewAppDelegate_iPad.h; path = iPad/BannerViewAppDelegate_iPad.h; sourceTree = "<group>"; };
+		9A2FA3461426E012003E58E0 /* BannerViewAppDelegate_iPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BannerViewAppDelegate_iPad.h; path = iPad/BannerViewAppDelegate_iPad.h; sourceTree = "<group>"; };
 		9A2FA3471426E012003E58E0 /* BannerViewAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BannerViewAppDelegate_iPad.m; path = iPad/BannerViewAppDelegate_iPad.m; sourceTree = "<group>"; };
 		9A2FA34A1426E012003E58E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
 		9A2FA3511426E012003E58E0 /* BannerViewTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BannerViewTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2FA3521426E012003E58E0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		9A2FA35B1426E013003E58E0 /* BannerViewTests-Info.plist */ = {isa = PBXFileReference; path = "BannerViewTests-Info.plist"; sourceTree = "<group>"; };
+		9A2FA35B1426E013003E58E0 /* BannerViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BannerViewTests-Info.plist"; sourceTree = "<group>"; };
 		9A2FA35D1426E013003E58E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9A2FA35F1426E013003E58E0 /* BannerViewTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerViewTests.h; sourceTree = "<group>"; };
 		9A2FA3611426E013003E58E0 /* BannerViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerViewTests.m; sourceTree = "<group>"; };
+		9A2FA36B1426E1FF003E58E0 /* BannerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerTableViewController.h; sourceTree = "<group>"; };
+		9A2FA36C1426E1FF003E58E0 /* BannerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerTableViewController.m; sourceTree = "<group>"; };
+		9A93511414284DF50028651F /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Banner.h; sourceTree = "<group>"; };
+		9A93511514284DF50028651F /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Banner.m; sourceTree = "<group>"; };
+		9A9351241429A24B0028651F /* IconDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconDownloader.h; sourceTree = "<group>"; };
+		9A9351251429A24B0028651F /* IconDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconDownloader.m; sourceTree = "<group>"; };
+		9A9351291429A5210028651F /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
+		9A93512B142AE63D0028651F /* BannerXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerXMLParser.h; sourceTree = "<group>"; };
+		9A93512C142AE63E0028651F /* BannerXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerXMLParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +133,14 @@
 		9A2FA3321426E012003E58E0 /* BannerView */ = {
 			isa = PBXGroup;
 			children = (
+				9A9351241429A24B0028651F /* IconDownloader.h */,
+				9A9351251429A24B0028651F /* IconDownloader.m */,
+				9A93512B142AE63D0028651F /* BannerXMLParser.h */,
+				9A93512C142AE63E0028651F /* BannerXMLParser.m */,
+				9A2FA36B1426E1FF003E58E0 /* BannerTableViewController.h */,
+				9A2FA36C1426E1FF003E58E0 /* BannerTableViewController.m */,
+				9A93511414284DF50028651F /* Banner.h */,
+				9A93511514284DF50028651F /* Banner.m */,
 				9A2FA33B1426E012003E58E0 /* BannerViewAppDelegate.h */,
 				9A2FA33C1426E012003E58E0 /* BannerViewAppDelegate.m */,
 				9A2FA33E1426E012003E58E0 /* iPhone */,
@@ -131,6 +153,7 @@
 		9A2FA3331426E012003E58E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9A9351291429A5210028651F /* Placeholder.png */,
 				9A2FA3341426E012003E58E0 /* BannerView-Info.plist */,
 				9A2FA3351426E012003E58E0 /* InfoPlist.strings */,
 				9A2FA3381426E012003E58E0 /* main.m */,
@@ -248,6 +271,7 @@
 				9A2FA3371426E012003E58E0 /* InfoPlist.strings in Resources */,
 				9A2FA3441426E012003E58E0 /* MainWindow_iPhone.xib in Resources */,
 				9A2FA34B1426E012003E58E0 /* MainWindow_iPad.xib in Resources */,
+				9A93512A1429A5210028651F /* Placeholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +311,10 @@
 				9A2FA33D1426E012003E58E0 /* BannerViewAppDelegate.m in Sources */,
 				9A2FA3411426E012003E58E0 /* BannerViewAppDelegate_iPhone.m in Sources */,
 				9A2FA3481426E012003E58E0 /* BannerViewAppDelegate_iPad.m in Sources */,
+				9A2FA36D1426E1FF003E58E0 /* BannerTableViewController.m in Sources */,
+				9A93511614284DF50028651F /* Banner.m in Sources */,
+				9A9351261429A24B0028651F /* IconDownloader.m in Sources */,
+				9A93512D142AE63E0028651F /* BannerXMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +420,8 @@
 		9A2FA3661426E013003E58E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BannerView/BannerView-Prefix.pch";
 				INFOPLIST_FILE = "BannerView/BannerView-Info.plist";
@@ -403,10 +433,12 @@
 		9A2FA3671426E013003E58E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BannerView/BannerView-Prefix.pch";
 				INFOPLIST_FILE = "BannerView/BannerView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -464,6 +496,7 @@
 				9A2FA3671426E013003E58E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9A2FA3681426E013003E58E0 /* Build configuration list for PBXNativeTarget "BannerViewTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +505,7 @@
 				9A2FA36A1426E013003E58E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

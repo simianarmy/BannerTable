@@ -7,6 +7,9 @@
 //
 
 #import "BannerViewAppDelegate.h"
+#import "BannerTableViewController.h"
+
+NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
 
 @implementation BannerViewAppDelegate
 
@@ -15,6 +18,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    BannerTableViewController *bannersViewController = [[[BannerTableViewController alloc] init] autorelease];
+    [self.window setRootViewController:bannersViewController];    
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
