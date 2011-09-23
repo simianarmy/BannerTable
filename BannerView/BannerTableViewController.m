@@ -11,8 +11,10 @@
 #import "Banner.h"
 #import "BannerXMLParser.h"
 
-#define kCustomRowHeight    60.0
+#define kCustomRowHeight    65
 #define kCustomRowCount     7
+#define kCellIndentationLevel   1
+#define kCellIndentationWidth   1
 
 // The one and only API endpoint for the banners xml data.  
 // Use a domain name, not an IP to prevent bricking your apps.
@@ -165,7 +167,16 @@ static NSString *const BannerDataAPIURL =
     [alertView release];
 }
 
-#pragma mark - UITableView Data Source Methods
+#pragma mark -
+#pragma mark Table Delegate Methods
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kCustomRowHeight;
+}
+
+#pragma mark - 
+#pragma mark UITableView Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
@@ -219,8 +230,14 @@ static NSString *const BannerDataAPIURL =
     if (nodeCount > 0) {
         Banner *banner = [self.banners objectAtIndex:[indexPath row]];
 
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.indentationLevel = kCellIndentationLevel;
+        cell.indentationWidth = kCellIndentationWidth;
         cell.textLabel.text = banner.title;
+        cell.textLabel.font = [UIFont fontWithName:@"Arial-Bold" size:16];
         cell.detailTextLabel.text = banner.subtitle;
+        cell.detailTextLabel.font = [UIFont fontWithName:@"Arial" size:11];
+        cell.detailTextLabel.textColor = [UIColor blackColor];
         
         // Only load cached images; defer new downloads until scrolling ends
         if (!banner.thumbnail) {
@@ -234,10 +251,19 @@ static NSString *const BannerDataAPIURL =
         } else {
             cell.imageView.image = banner.thumbnail;
         }
-        
-        cell.accessoryType = UITableViewCellAccessoryNone;
     }        
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell 
+forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    if (indexPath.row % 2) {
+        //#C2C2C2
+        cell.backgroundColor = [UIColor colorWithRed:194.0/255 green:194.0/255 blue:194.0/255 alpha:1.0];
+    } else {
+        cell.backgroundColor = [UIColor lightGrayColor];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -248,7 +274,8 @@ static NSString *const BannerDataAPIURL =
                              animated:YES];
 }
 
-#pragma mark - NSURLConnection delegate methods
+#pragma mark - 
+#pragma mark NSURLConnection delegate methods
 
 - (void)handleError:(NSError *)error
 {

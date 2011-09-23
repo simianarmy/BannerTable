@@ -53,7 +53,7 @@
 #import "IconDownloader.h"
 #import "Banner.h"
 
-#define kAppIconHeight 48
+#define kAppIconHeight 56
 
 
 @implementation IconDownloader
