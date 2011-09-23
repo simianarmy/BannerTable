@@ -12,6 +12,9 @@
 @interface BannerTableViewController : UITableViewController
     <UIScrollViewDelegate, IconDownloaderDelegate, ParseOperationDelegate>
 {
+    // Custom cell pointer for loading xib
+    UITableViewCell *tvCell;
+    // Data source array
     NSArray  *banners;
     // XML Fetching
     NSMutableData *xmlData;
@@ -19,6 +22,7 @@
     // Banner icon dowloading
     NSMutableDictionary *imageDownloadsInProgress; // the set of IconDownloader objects for each banner
 }
+@property (nonatomic, assign) IBOutlet UITableViewCell *tvCell;
 @property (nonatomic, retain) NSArray *banners;
 @property (nonatomic, retain) NSMutableData *xmlData;
 @property (nonatomic, retain) NSURLConnection *connectionInProgress;

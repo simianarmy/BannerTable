@@ -29,6 +29,7 @@
 		9A9351261429A24B0028651F /* IconDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9351251429A24B0028651F /* IconDownloader.m */; };
 		9A93512A1429A5210028651F /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9351291429A5210028651F /* Placeholder.png */; };
 		9A93512D142AE63E0028651F /* BannerXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A93512C142AE63E0028651F /* BannerXMLParser.m */; };
+		9AB91E5B142C5530001ECDBF /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB91E5A142C5530001ECDBF /* TableCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		9A9351291429A5210028651F /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
 		9A93512B142AE63D0028651F /* BannerXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerXMLParser.h; sourceTree = "<group>"; };
 		9A93512C142AE63E0028651F /* BannerXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerXMLParser.m; sourceTree = "<group>"; };
+		9AB91E5A142C5530001ECDBF /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		9A2FA31D1426E011003E58E0 = {
 			isa = PBXGroup;
 			children = (
+				9AB91E5D142C553E001ECDBF /* Resources */,
 				9A2FA3321426E012003E58E0 /* BannerView */,
 				9A2FA3591426E013003E58E0 /* BannerViewTests */,
 				9A2FA32B1426E012003E58E0 /* Frameworks */,
@@ -201,6 +204,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9AB91E5D142C553E001ECDBF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9AB91E5A142C5530001ECDBF /* TableCell.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -272,6 +283,7 @@
 				9A2FA3441426E012003E58E0 /* MainWindow_iPhone.xib in Resources */,
 				9A2FA34B1426E012003E58E0 /* MainWindow_iPad.xib in Resources */,
 				9A93512A1429A5210028651F /* Placeholder.png in Resources */,
+				9AB91E5B142C5530001ECDBF /* TableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,6 +28,7 @@ static NSString *const BannerDataAPIURL =
 @end
 
 @implementation BannerTableViewController
+@synthesize tvCell;
 @synthesize banners;
 @synthesize imageDownloadsInProgress;
 @synthesize xmlData;
@@ -197,7 +198,7 @@ static NSString *const BannerDataAPIURL =
 {
     // customize the appearance of table view cells
 	//
-	static NSString *CellIdentifier = @"TableCell";
+	static NSString *CellIdentifier = @"BannerCell";
     static NSString *PlaceholderCellIdentifier = @"PlaceholderCell";
     
     // add a placeholder cell while waiting on table data
@@ -222,22 +223,45 @@ static NSString *const BannerDataAPIURL =
     UITableViewCell *cell = 
     [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
+        [[NSBundle mainBundle] loadNibNamed:@"TableCell" owner:self options:nil];
+        cell = tvCell;
+        self.tvCell = nil;
+        /*
         cell = [[[UITableViewCell alloc]
                  initWithStyle:UITableViewCellStyleSubtitle
                  reuseIdentifier:CellIdentifier] autorelease];
+         */
     }
     // Leave cells empty if there's no data yet
     if (nodeCount > 0) {
         Banner *banner = [self.banners objectAtIndex:[indexPath row]];
 
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        UILabel *label;
+        label = (UILabel *)[cell viewWithTag:1];
+        label.text = banner.title;
+        // *** HACK: Force vertical align: top
+        label.numberOfLines = 1;
+        label.frame = CGRectMake(69, 2, 196, 24);
+        [label sizeToFit];
+        
+        
+        label = (UILabel *)[cell viewWithTag:2];
+        label.text = banner.subtitle;
+
+        /* 
+         * I'm leaving the original cell label code in case you don't want to use the NIB method
+         * Indentation is defined in the NIB
         cell.indentationLevel = kCellIndentationLevel;
         cell.indentationWidth = kCellIndentationWidth;
+         
+        // Set text labels' attributes here.
         cell.textLabel.text = banner.title;
         cell.textLabel.font = [UIFont fontWithName:@"Arial-Bold" size:16];
         cell.detailTextLabel.text = banner.subtitle;
         cell.detailTextLabel.font = [UIFont fontWithName:@"Arial" size:11];
         cell.detailTextLabel.textColor = [UIColor blackColor];
+        */
         
         // Only load cached images; defer new downloads until scrolling ends
         if (!banner.thumbnail) {
