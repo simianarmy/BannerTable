@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Banner : NSObject
+@interface Banner : NSObject <NSCoding>
 {
     NSString *bannerID;
     NSString *title;
@@ -24,4 +24,6 @@
 @property (nonatomic, retain) UIImage  *thumbnail;
 @property (nonatomic, retain) NSURL    *thumbnailURL;
 
+- (NSString *)thumbnailURLString;
+- (NSString *)thumbnailCacheKey;
 @end

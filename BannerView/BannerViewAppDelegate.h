@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class BannerTableViewController;
+
 extern NSString *AppDataDownloadCompleted;
 
 @interface BannerViewAppDelegate : NSObject <UIApplicationDelegate>
 {
-
+    BannerTableViewController *bannerTableController;
 }
-
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) BannerTableViewController *bannerTableController;
 
+- (NSString *)bannersConfigurationPath;
+- (void)archiveBanners;
 @end

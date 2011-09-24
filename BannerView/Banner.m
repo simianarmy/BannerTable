@@ -42,4 +42,39 @@
     [super dealloc];
 }
 
+- (NSString *)thumbnailURLString
+{
+    return [self.thumbnailURL absoluteString];
+}
+
+// Useful for generating image cache key from thumbnail url
+- (NSString *)thumbnailCacheKey
+{
+    return [[self thumbnailURLString] lastPathComponent];
+}
+
+#pragma mark -
+#pragma mark NSCoding Methods
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:bannerID forKey:@"bannerID"];
+    [aCoder encodeObject:title forKey:@"title"];
+    [aCoder encodeObject:subtitle forKey:@"subtitle"];
+    [aCoder encodeObject:clickTargetURL forKey:@"clickTargetURL"];
+    [aCoder encodeObject:thumbnailURL forKey:@"thumbnailURL"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    [super init];
+    [self setBannerID:[aDecoder decodeObjectForKey:@"bannerID"]];
+    [self setTitle:[aDecoder decodeObjectForKey:@"title"]];
+    [self setSubtitle:[aDecoder decodeObjectForKey:@"subtitle"]];
+    [self setClickTargetURL:[aDecoder decodeObjectForKey:@"clickTargetURL"]];
+    [self setThumbnailURL:[aDecoder decodeObjectForKey:@"thumbnailURL"]];
+    
+    return self;
+}
+
 @end

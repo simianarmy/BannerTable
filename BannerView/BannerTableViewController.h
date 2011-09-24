@@ -15,7 +15,7 @@
     // Custom cell pointer for loading xib
     UITableViewCell *tvCell;
     // Data source array
-    NSArray  *banners;
+    NSMutableArray  *banners;
     // XML Fetching
     NSMutableData *xmlData;
     NSURLConnection *connectionInProgress;
@@ -23,7 +23,7 @@
     NSMutableDictionary *imageDownloadsInProgress; // the set of IconDownloader objects for each banner
 }
 @property (nonatomic, assign) IBOutlet UITableViewCell *tvCell;
-@property (nonatomic, retain) NSArray *banners;
+@property (nonatomic, retain) NSMutableArray *banners;
 @property (nonatomic, retain) NSMutableData *xmlData;
 @property (nonatomic, retain) NSURLConnection *connectionInProgress;
 @property (nonatomic, retain) NSMutableDictionary *imageDownloadsInProgress;

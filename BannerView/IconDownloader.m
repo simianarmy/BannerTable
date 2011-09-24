@@ -52,6 +52,7 @@
 
 #import "IconDownloader.h"
 #import "Banner.h"
+#import "ImageCache.h"
 
 #define kAppIconHeight 56
 
@@ -81,6 +82,9 @@
 
 - (void)startDownload
 {
+    if (!banner.thumbnailURLString) return;
+    
+    NSLog(@"Downloading image from %@", banner.thumbnailURLString);
     self.activeDownload = [NSMutableData data];
     // alloc+init and start an NSURLConnection; release on completion/failure
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:
@@ -125,12 +129,18 @@
 		UIGraphicsBeginImageContext(itemSize);
 		CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
 		[image drawInRect:imageRect];
-		self.banner.thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+        
+        // Save image to singleton cache using url as key
+        [[ImageCache sharedImageCache] setImage:UIGraphicsGetImageFromCurrentImageContext() 
+                                         forKey:self.banner.thumbnailCacheKey];
+        
 		UIGraphicsEndImageContext();
     }
     else
     {
-        self.banner.thumbnail = image;
+        // Save image to singleton cache using url as key
+        [[ImageCache sharedImageCache] setImage:image
+                                         forKey:self.banner.thumbnailCacheKey];
     }
     
     self.activeDownload = nil;

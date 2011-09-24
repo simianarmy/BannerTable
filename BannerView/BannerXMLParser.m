@@ -10,6 +10,7 @@
 #import "Banner.h"
 
 static NSString *kBannerStr     = @"banner";
+static NSString *kBannerIDStr   = @"bannerID";
 static NSString *kTitleStr      = @"title";
 static NSString *kSubtitleStr   = @"subtitle";
 static NSString *kImageURLStr   = @"thumbnailURL";
@@ -93,7 +94,9 @@ static NSString *kTargetStr     = @"target";
 {
     NSLog(@"End element: %@", elementName);
     if (self.workingEntry) {
-        if ([elementName isEqualToString:kTitleStr]) {
+        if ([elementName isEqualToString:kBannerIDStr]) {
+            [self.workingEntry setBannerID:elementString];
+        } else if ([elementName isEqualToString:kTitleStr]) {
             [self.workingEntry setTitle:elementString];
         } else if ([elementName isEqualToString:kSubtitleStr]) {
             [self.workingEntry setSubtitle:elementString];

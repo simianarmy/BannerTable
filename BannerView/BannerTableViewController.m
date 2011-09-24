@@ -10,21 +10,35 @@
 #import "BannerTableViewController.h"
 #import "Banner.h"
 #import "BannerXMLParser.h"
+#import "ImageCache.h"
+#import "FileHelpers.h"
 
+// These settings modify the look of the banner cells.
+// Use these values if you do not use the cell XIB
 #define kCustomRowHeight    65
 #define kCustomRowCount     7
 #define kCellIndentationLevel   1
 #define kCellIndentationWidth   1
+
+// Set this to the minimum number of seconds interval between banner config
+// server requests.  Smaller values = higher network load on banner server.
+#define kBannerConfigExpirySeconds 86400 // 24 hours
+
+// The permanent file for storing the latest banner config download date
+static NSString *const BannerConfigFile =
+    @"BannerConfigDate.info";
 
 // The one and only API endpoint for the banners xml data.  
 // Use a domain name, not an IP to prevent bricking your apps.
 static NSString *const BannerDataAPIURL = 
     @"http://sportfanapi.local/xml/banners.xml";
 
-
 @interface BannerTableViewController ()
 - (void)startIconDownload:(Banner *)banner forIndexPath:(NSIndexPath *)indexPath;
 - (void)handleLoadError:(NSString *)errorMessage;
+- (BOOL)bannerConfigurationDidExpire;
+- (NSDate *)bannersConfigurationDate;
+- (void)bannersConfigurationDate:(NSDate *)date;
 @end
 
 @implementation BannerTableViewController
@@ -45,7 +59,6 @@ static NSString *const BannerDataAPIURL =
 {
     if (self = [super initWithStyle:style]) {
         self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
-        banners = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -82,6 +95,46 @@ static NSString *const BannerDataAPIURL =
     [super dealloc];
 }
 
+// @returns last time banner configuration was downloaded (or nil if never).
+- (NSDate *)bannersConfigurationDate
+{
+    NSString *dateStr = [[NSString alloc] 
+                         initWithContentsOfFile:pathInDocumentDirectory(BannerConfigFile)];
+    if (!dateStr) {
+        return nil;
+    }
+    NSLog(@"Read config date: %@", dateStr);
+    
+    NSDate *configDate = [NSDate dateWithTimeIntervalSince1970:[dateStr floatValue]];
+
+    [dateStr release];
+    
+    return configDate;
+}
+
+// Saves the latest banners configuration download date to permanent storage
+- (void)bannersConfigurationDate:(NSDate *)date
+{
+    NSString *dt = [NSString stringWithFormat:@"%f", [date timeIntervalSince1970]];
+    NSLog(@"Saving date: %@", dt);
+    
+    [dt writeToFile:pathInDocumentDirectory(BannerConfigFile)
+              atomically:YES 
+                encoding:NSUTF8StringEncoding 
+                   error:nil];
+}
+
+// @returns TRUE if our banner configuration is stale
+- (BOOL)bannerConfigurationDidExpire
+{
+    // Get last config load time 
+    NSDate *lastSaved = [self bannersConfigurationDate];
+    if (!lastSaved) {
+        return YES; // Expired if no previous save date
+    }
+    return [lastSaved compare:[NSDate dateWithTimeIntervalSinceNow:-kBannerConfigExpirySeconds]] == NSOrderedAscending;
+}
+
 #pragma mark - View lifecycle
 
 /*
@@ -95,7 +148,9 @@ static NSString *const BannerDataAPIURL =
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    [self loadBanners];
+    if (([banners count] == 0) || [self bannerConfigurationDidExpire]) {
+        [self loadBanners];
+    } 
     [super viewDidLoad];
 }
 
@@ -104,13 +159,12 @@ static NSString *const BannerDataAPIURL =
 {
     [super viewWillAppear:animated];
 }
-*/
 
 - (void)viewDidUnload
 {
-    self.banners = nil;
     [super viewDidUnload];
 }
+*/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -148,8 +202,14 @@ static NSString *const BannerDataAPIURL =
 
 - (void)didFinishParsing:(NSArray *)tableData
 {
-    self.banners = tableData;
-    [[self tableView] reloadData];
+    // Don't mess with existing data if parsing didn't return anything
+    if ([tableData count] > 0) {
+        // Make sure to clear any existing banner data
+        [banners removeAllObjects];
+        
+        [self.banners addObjectsFromArray:tableData];
+        [[self tableView] reloadData];
+    }
 }
 
 - (void)parseErrorOccurred:(NSError *)error
@@ -264,7 +324,8 @@ static NSString *const BannerDataAPIURL =
         */
         
         // Only load cached images; defer new downloads until scrolling ends
-        if (!banner.thumbnail) {
+        UIImage *thumb = [[ImageCache sharedImageCache] imageForKey:banner.thumbnailCacheKey];
+        if (!thumb) {
             if (self.tableView.dragging == NO && self.tableView.decelerating == NO) {
                 if (banner.thumbnailURL) {
                     [self startIconDownload:banner forIndexPath:indexPath];
@@ -273,7 +334,7 @@ static NSString *const BannerDataAPIURL =
             // if a download is deferred or in progress, return a placeholder image
             cell.imageView.image = [UIImage imageNamed:@"Placeholder.png"];                
         } else {
-            cell.imageView.image = banner.thumbnail;
+            cell.imageView.image = thumb;
         }
     }        
     return cell;
@@ -345,6 +406,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     self.connectionInProgress = nil;
     
+    // Save the config download date
+    [self bannersConfigurationDate:[NSDate date]];
+    
+    // Start parsing the downloaded data
     [[[BannerXMLParser alloc] initWithData:xmlData delegate:self] autorelease];
         
     self.xmlData = nil;
@@ -395,7 +460,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:iconDownloader.indexPathInTableView];
         
         // Display the newly loaded image
-        cell.imageView.image = iconDownloader.banner.thumbnail;
+        cell.imageView.image = [[ImageCache sharedImageCache] imageForKey:iconDownloader.banner.thumbnailCacheKey];
     }
 }
 

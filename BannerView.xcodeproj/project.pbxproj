@@ -30,6 +30,8 @@
 		9A93512A1429A5210028651F /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A9351291429A5210028651F /* Placeholder.png */; };
 		9A93512D142AE63E0028651F /* BannerXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A93512C142AE63E0028651F /* BannerXMLParser.m */; };
 		9AB91E5B142C5530001ECDBF /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB91E5A142C5530001ECDBF /* TableCell.xib */; };
+		9AB91E5F142D9AAA001ECDBF /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB91E5E142D9AAA001ECDBF /* FileHelpers.m */; };
+		9AB91E63142DA508001ECDBF /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB91E62142DA508001ECDBF /* ImageCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,10 @@
 		9A93512B142AE63D0028651F /* BannerXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerXMLParser.h; sourceTree = "<group>"; };
 		9A93512C142AE63E0028651F /* BannerXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerXMLParser.m; sourceTree = "<group>"; };
 		9AB91E5A142C5530001ECDBF /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
+		9AB91E5E142D9AAA001ECDBF /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelpers.m; sourceTree = "<group>"; };
+		9AB91E60142D9AE9001ECDBF /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelpers.h; sourceTree = "<group>"; };
+		9AB91E61142DA508001ECDBF /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
+		9AB91E62142DA508001ECDBF /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,10 @@
 				9A2FA33E1426E012003E58E0 /* iPhone */,
 				9A2FA3451426E012003E58E0 /* iPad */,
 				9A2FA3331426E012003E58E0 /* Supporting Files */,
+				9AB91E5E142D9AAA001ECDBF /* FileHelpers.m */,
+				9AB91E60142D9AE9001ECDBF /* FileHelpers.h */,
+				9AB91E61142DA508001ECDBF /* ImageCache.h */,
+				9AB91E62142DA508001ECDBF /* ImageCache.m */,
 			);
 			path = BannerView;
 			sourceTree = "<group>";
@@ -327,6 +337,8 @@
 				9A93511614284DF50028651F /* Banner.m in Sources */,
 				9A9351261429A24B0028651F /* IconDownloader.m in Sources */,
 				9A93512D142AE63E0028651F /* BannerXMLParser.m in Sources */,
+				9AB91E5F142D9AAA001ECDBF /* FileHelpers.m in Sources */,
+				9AB91E63142DA508001ECDBF /* ImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

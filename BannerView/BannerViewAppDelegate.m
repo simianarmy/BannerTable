@@ -8,18 +8,32 @@
 
 #import "BannerViewAppDelegate.h"
 #import "BannerTableViewController.h"
+#import "FileHelpers.h"
 
 NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
 
 @implementation BannerViewAppDelegate
 
 @synthesize window = _window;
+@synthesize bannerTableController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    BannerTableViewController *bannersViewController = [[[BannerTableViewController alloc] init] autorelease];
-    [self.window setRootViewController:bannersViewController];    
+    NSString *bannersPath = [self bannersConfigurationPath];
+    
+    NSMutableArray *banners = 
+        [NSKeyedUnarchiver unarchiveObjectWithFile:bannersPath];
+    
+    NSLog(@"Unarchived %d banners", [banners count]);
+    if (!banners) {
+        banners = [NSMutableArray array];
+    }
+    bannerTableController = [[BannerTableViewController alloc] init];
+    
+    [bannerTableController setBanners:banners];
+    
+    [self.window setRootViewController:bannerTableController];    
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -39,6 +53,7 @@ NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
+    [self archiveBanners];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -62,12 +77,32 @@ NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+    [self archiveBanners];
 }
 
 - (void)dealloc
 {
     [_window release];
+    [bannerTableController release];
     [super dealloc];
+}
+
+- (NSString *)bannersConfigurationPath
+{
+    return pathInDocumentDirectory(@"Banners.data");
+}
+
+- (void)archiveBanners
+{
+    // Get full path of config archive
+    NSString *bannersPath = [self bannersConfigurationPath];
+    
+    // Get the banners list
+    NSArray *banners = [bannerTableController banners];
+    
+    // Archive banners list to file
+    NSLog(@"Archiving %d banners", [banners count]);
+    [NSKeyedArchiver archiveRootObject:banners toFile:bannersPath];
 }
 
 @end

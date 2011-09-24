@@ -49,7 +49,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUILabel" id="78297886">
 								<reference key="NSNextResponder" ref="108668657"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">294</int>
 								<string key="NSFrame">{{69, 2}, {196, 24}}</string>
 								<reference key="NSSuperview" ref="108668657"/>
 								<reference key="NSWindow"/>
@@ -76,10 +76,11 @@
 							</object>
 							<object class="IBUILabel" id="243374617">
 								<reference key="NSNextResponder" ref="108668657"/>
-								<int key="NSvFlags">292</int>
+								<int key="NSvFlags">294</int>
 								<string key="NSFrame">{{69, 29}, {196, 30}}</string>
 								<reference key="NSSuperview" ref="108668657"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:311</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
