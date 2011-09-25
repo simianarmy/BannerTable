@@ -6,7 +6,6 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "BannerViewAppDelegate.h"
 #import "BannerTableViewController.h"
 #import "Banner.h"
 #import "BannerXMLParser.h"
@@ -88,6 +87,22 @@ static NSString *const StatsTrackingScriptURL =
 {
     if (self = [super initWithStyle:style]) {
         self.imageDownloadsInProgress = [NSMutableDictionary dictionary];
+        // Unarchive banners
+        NSString *archivePath = [BannerTableViewController bannersConfigurationPath];
+        
+        self.banners = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
+        NSLog(@"Unarchived %d banners", [self.banners count]);
+        if (!self.banners) {
+            self.banners = [NSMutableArray array];
+        }
+        // Unarchive and assign stats object
+        archivePath = [BannerTableViewController statsArchivePath];
+        //NSLog(@"Unarchiving stats from %@", archivePath);
+        self.userStats = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
+        if (!self.userStats)
+        {
+            self.userStats = [[UserStats alloc] init];
+        }
     }
     return self;
 }
@@ -128,30 +143,27 @@ static NSString *const StatsTrackingScriptURL =
 // @returns last time banner configuration was downloaded (or nil if never).
 - (NSDate *)bannersConfigurationDate
 {
-    NSString *dateStr = [[NSString alloc] 
-                         initWithContentsOfFile:pathInDocumentDirectory(BannerConfigFile)];
-    if (!dateStr) {
-        return nil;
-    }
-    NSLog(@"Read config date: %@", dateStr);
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *plistPath = [bundle pathForResource:@"configstate" ofType:@"plist"];
+    NSDictionary *dictionary = [[[NSDictionary alloc] initWithContentsOfFile:plistPath] autorelease];
+    NSDate *date = [dictionary objectForKey:@"lastUpdated"];
+    NSLog(@"Read config date: %@", date);
+    // WARNING: Can't release dictionary without releasing it's date object!
     
-    NSDate *configDate = [NSDate dateWithTimeIntervalSince1970:[dateStr floatValue]];
-
-    [dateStr release];
-    
-    return configDate;
+    return date;
 }
 
 // Saves the latest banners configuration download date to permanent storage
 - (void)bannersConfigurationDate:(NSDate *)date
 {
-    NSString *dt = [NSString stringWithFormat:@"%f", [date timeIntervalSince1970]];
-    NSLog(@"Saving date: %@", dt);
+    NSLog(@"Saving date: %@", date);
     
-    [dt writeToFile:pathInDocumentDirectory(BannerConfigFile)
-              atomically:YES 
-                encoding:NSUTF8StringEncoding 
-                   error:nil];
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *plistPath = [bundle pathForResource:@"configstate" ofType:@"plist"];
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    [dictionary setObject:date forKey:@"lastUpdated"];
+    [dictionary writeToFile:plistPath atomically:YES];
+    [dictionary release];
 }
 
 // @returns TRUE if our banner configuration is stale
@@ -259,9 +271,9 @@ static NSString *const StatsTrackingScriptURL =
         [connectionInProgress release];
     } 
     [xmlData release];
-    xmlData = [[NSMutableData alloc] init];
+    self.xmlData = [[NSMutableData alloc] init];
     
-    connectionInProgress = [[NSURLConnection alloc] initWithRequest:request
+    self.connectionInProgress = [[NSURLConnection alloc] initWithRequest:request
                                                     delegate:self
                                             startImmediately:YES];
 
@@ -278,7 +290,7 @@ static NSString *const StatsTrackingScriptURL =
         // Make sure to clear any existing banner data
         [banners removeAllObjects];
         
-        [self.banners addObjectsFromArray:tableData];
+        [banners addObjectsFromArray:tableData];
         [[self tableView] reloadData];
     }
 }
@@ -305,7 +317,7 @@ static NSString *const StatsTrackingScriptURL =
 - (void)didFinishPosting
 {
     // Now safe to reset stats
-    [self.userStats reset];
+    [userStats reset];
     
     // We need to archive stats right away in case program is terminated before we 
     // can archive again.  Then next unarchive would load old stats causing bad reports.

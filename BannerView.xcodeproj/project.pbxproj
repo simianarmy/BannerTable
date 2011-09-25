@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9A1F7DFA142EA2850034716A /* UserStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F7DF9142EA2850034716A /* UserStats.m */; };
 		9A1F7DFE142EBD6F0034716A /* StatsPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F7DFD142EBD6E0034716A /* StatsPoster.m */; };
+		9A1F7E06142FBA280034716A /* configstate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A1F7E05142FBA280034716A /* configstate.plist */; };
 		9A2FA32D1426E012003E58E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA32C1426E012003E58E0 /* UIKit.framework */; };
 		9A2FA32F1426E012003E58E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA32E1426E012003E58E0 /* Foundation.framework */; };
 		9A2FA3311426E012003E58E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA3301426E012003E58E0 /* CoreGraphics.framework */; };
@@ -51,6 +52,7 @@
 		9A1F7DF9142EA2850034716A /* UserStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStats.m; sourceTree = "<group>"; };
 		9A1F7DFC142EBD6E0034716A /* StatsPoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsPoster.h; sourceTree = "<group>"; };
 		9A1F7DFD142EBD6E0034716A /* StatsPoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsPoster.m; sourceTree = "<group>"; };
+		9A1F7E05142FBA280034716A /* configstate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = configstate.plist; sourceTree = "<group>"; };
 		9A2FA3281426E012003E58E0 /* BannerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BannerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2FA32C1426E012003E58E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9A2FA32E1426E012003E58E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				9AB91E5A142C5530001ECDBF /* TableCell.xib */,
+				9A1F7E05142FBA280034716A /* configstate.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				9A2FA34B1426E012003E58E0 /* MainWindow_iPad.xib in Resources */,
 				9A93512A1429A5210028651F /* Placeholder.png in Resources */,
 				9AB91E5B142C5530001ECDBF /* TableCell.xib in Resources */,
+				9A1F7E06142FBA280034716A /* configstate.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -57,7 +57,7 @@ static NSString *kTargetStr     = @"target";
     if (![self isCancelled])
     {
         // notify our AppDelegate that the parsing is complete
-        [self.delegate didFinishParsing:self.workingArray];
+        [delegate didFinishParsing:workingArray];
     }
     // Done parsing
     [parser release];

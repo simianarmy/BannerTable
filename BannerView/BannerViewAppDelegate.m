@@ -8,7 +8,6 @@
 
 #import "BannerViewAppDelegate.h"
 #import "BannerTableViewController.h"
-#import "UserStats.h"
 
 NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
 
@@ -19,29 +18,7 @@ NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    NSString *archivePath = [BannerTableViewController bannersConfigurationPath];
-    
-    NSMutableArray *banners = 
-        [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
-    
-    NSLog(@"Unarchived %d banners", [banners count]);
-    if (!banners) {
-        banners = [NSMutableArray array];
-    }
     bannerTableController = [[BannerTableViewController alloc] init];
-    
-    [bannerTableController setBanners:banners];
-    
-    // Unarchive and assign stats object
-    archivePath = [BannerTableViewController statsArchivePath];
-    //NSLog(@"Unarchiving stats from %@", archivePath);
-    UserStats *stats = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
-    if (!stats)
-    {
-        stats = [[UserStats alloc] init];
-    }
-    [bannerTableController setUserStats:stats];
     
     [self.window setRootViewController:bannerTableController];    
     

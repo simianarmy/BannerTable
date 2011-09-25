@@ -1,0 +1,23 @@
+Banner Table View 
+
+Installation:
+
+- Add the source code files to your project under its own directory
+  
+Usage:
+
+  - Initialize using BannerTableViewController class
+  Example:
+  
+  BannerTableViewController *banners = [[[BannerTableViewController alloc] init] autorelease];
+  
+  - Save banner data when application moves to inactive state, usually in 
+  applicationDidEnterBackground and applicationWillTerminate
+  
+  [bannerTableController archiveData];
+  
+Configuring:
+  
+  - See Settings.h for configurable values
+  - To modify the UI, see BannerTableCell.xib
+
