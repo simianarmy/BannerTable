@@ -19,6 +19,4 @@ extern NSString *AppDataDownloadCompleted;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) BannerTableViewController *bannerTableController;
 
-- (NSString *)bannersConfigurationPath;
-- (void)archiveBanners;
 @end

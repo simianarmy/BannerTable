@@ -8,7 +8,7 @@
 
 #import "BannerViewAppDelegate.h"
 #import "BannerTableViewController.h"
-#import "FileHelpers.h"
+#import "UserStats.h"
 
 NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
 
@@ -20,10 +20,10 @@ NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    NSString *bannersPath = [self bannersConfigurationPath];
+    NSString *archivePath = [BannerTableViewController bannersConfigurationPath];
     
     NSMutableArray *banners = 
-        [NSKeyedUnarchiver unarchiveObjectWithFile:bannersPath];
+        [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
     
     NSLog(@"Unarchived %d banners", [banners count]);
     if (!banners) {
@@ -32,6 +32,16 @@ NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
     bannerTableController = [[BannerTableViewController alloc] init];
     
     [bannerTableController setBanners:banners];
+    
+    // Unarchive and assign stats object
+    archivePath = [BannerTableViewController statsArchivePath];
+    //NSLog(@"Unarchiving stats from %@", archivePath);
+    UserStats *stats = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
+    if (!stats)
+    {
+        stats = [[UserStats alloc] init];
+    }
+    [bannerTableController setUserStats:stats];
     
     [self.window setRootViewController:bannerTableController];    
     
@@ -53,7 +63,7 @@ NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
-    [self archiveBanners];
+    [bannerTableController archiveData];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -77,7 +87,7 @@ NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
-    [self archiveBanners];
+    [bannerTableController archiveData];
 }
 
 - (void)dealloc
@@ -87,22 +97,5 @@ NSString *AppDataDownloadCompleted = @"AppDataDownloadCompleted";
     [super dealloc];
 }
 
-- (NSString *)bannersConfigurationPath
-{
-    return pathInDocumentDirectory(@"Banners.data");
-}
-
-- (void)archiveBanners
-{
-    // Get full path of config archive
-    NSString *bannersPath = [self bannersConfigurationPath];
-    
-    // Get the banners list
-    NSArray *banners = [bannerTableController banners];
-    
-    // Archive banners list to file
-    NSLog(@"Archiving %d banners", [banners count]);
-    [NSKeyedArchiver archiveRootObject:banners toFile:bannersPath];
-}
 
 @end

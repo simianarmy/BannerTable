@@ -23,12 +23,40 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "BannerView/BannerViewAppDelegate.m"
-         timestampString = "338539871.859824"
+         timestampString = "338603189.663134"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "29"
-         endingLineNumber = "29"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
          landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "BannerView/BannerTableViewController.m"
+         timestampString = "338621691.687163"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "173"
+         endingLineNumber = "173"
+         landmarkName = "-submitUserStats"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "BannerView/BannerTableViewController.m"
+         timestampString = "338621691.687163"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "172"
+         endingLineNumber = "172"
+         landmarkName = "-submitUserStats"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

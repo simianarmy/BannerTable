@@ -71,7 +71,7 @@ static NSString *kTargetStr     = @"target";
  qualifiedName:(NSString *)qName
     attributes:(NSDictionary *)attributeDict
 {
-    NSLog(@"Element %@", elementName);
+    //NSLog(@"Element %@", elementName);
     
     if ([elementName isEqualToString:kBannerStr]) {
         waitingForBannerElement = YES;
@@ -83,7 +83,7 @@ static NSString *kTargetStr     = @"target";
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    NSLog(@"characters: %@", string);
+    //NSLog(@"characters: %@", string);
     [elementString appendString:string];
 }
 
@@ -92,7 +92,7 @@ static NSString *kTargetStr     = @"target";
   namespaceURI:(NSString *)namespaceURI 
  qualifiedName:(NSString *)qName
 {
-    NSLog(@"End element: %@", elementName);
+    //NSLog(@"End element: %@", elementName);
     if (self.workingEntry) {
         if ([elementName isEqualToString:kBannerIDStr]) {
             [self.workingEntry setBannerID:elementString];

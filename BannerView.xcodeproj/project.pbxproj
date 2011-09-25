@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A1F7DFA142EA2850034716A /* UserStats.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F7DF9142EA2850034716A /* UserStats.m */; };
+		9A1F7DFE142EBD6F0034716A /* StatsPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1F7DFD142EBD6E0034716A /* StatsPoster.m */; };
 		9A2FA32D1426E012003E58E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA32C1426E012003E58E0 /* UIKit.framework */; };
 		9A2FA32F1426E012003E58E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA32E1426E012003E58E0 /* Foundation.framework */; };
 		9A2FA3311426E012003E58E0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2FA3301426E012003E58E0 /* CoreGraphics.framework */; };
@@ -45,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A1F7DF8142EA2850034716A /* UserStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserStats.h; sourceTree = "<group>"; };
+		9A1F7DF9142EA2850034716A /* UserStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserStats.m; sourceTree = "<group>"; };
+		9A1F7DFC142EBD6E0034716A /* StatsPoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsPoster.h; sourceTree = "<group>"; };
+		9A1F7DFD142EBD6E0034716A /* StatsPoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsPoster.m; sourceTree = "<group>"; };
 		9A2FA3281426E012003E58E0 /* BannerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BannerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2FA32C1426E012003E58E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9A2FA32E1426E012003E58E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -144,21 +150,25 @@
 			children = (
 				9A9351241429A24B0028651F /* IconDownloader.h */,
 				9A9351251429A24B0028651F /* IconDownloader.m */,
-				9A93512B142AE63D0028651F /* BannerXMLParser.h */,
+				9AB91E5E142D9AAA001ECDBF /* FileHelpers.m */,
+				9AB91E60142D9AE9001ECDBF /* FileHelpers.h */,
+				9AB91E61142DA508001ECDBF /* ImageCache.h */,
+				9AB91E62142DA508001ECDBF /* ImageCache.m */,
+				9A1F7DFC142EBD6E0034716A /* StatsPoster.h */,
+				9A1F7DFD142EBD6E0034716A /* StatsPoster.m */,
 				9A93512C142AE63E0028651F /* BannerXMLParser.m */,
+				9A93512B142AE63D0028651F /* BannerXMLParser.h */,
 				9A2FA36B1426E1FF003E58E0 /* BannerTableViewController.h */,
 				9A2FA36C1426E1FF003E58E0 /* BannerTableViewController.m */,
-				9A93511414284DF50028651F /* Banner.h */,
 				9A93511514284DF50028651F /* Banner.m */,
+				9A93511414284DF50028651F /* Banner.h */,
+				9A1F7DF8142EA2850034716A /* UserStats.h */,
+				9A1F7DF9142EA2850034716A /* UserStats.m */,
 				9A2FA33B1426E012003E58E0 /* BannerViewAppDelegate.h */,
 				9A2FA33C1426E012003E58E0 /* BannerViewAppDelegate.m */,
 				9A2FA33E1426E012003E58E0 /* iPhone */,
 				9A2FA3451426E012003E58E0 /* iPad */,
 				9A2FA3331426E012003E58E0 /* Supporting Files */,
-				9AB91E5E142D9AAA001ECDBF /* FileHelpers.m */,
-				9AB91E60142D9AE9001ECDBF /* FileHelpers.h */,
-				9AB91E61142DA508001ECDBF /* ImageCache.h */,
-				9AB91E62142DA508001ECDBF /* ImageCache.m */,
 			);
 			path = BannerView;
 			sourceTree = "<group>";
@@ -339,6 +349,8 @@
 				9A93512D142AE63E0028651F /* BannerXMLParser.m in Sources */,
 				9AB91E5F142D9AAA001ECDBF /* FileHelpers.m in Sources */,
 				9AB91E63142DA508001ECDBF /* ImageCache.m in Sources */,
+				9A1F7DFA142EA2850034716A /* UserStats.m in Sources */,
+				9A1F7DFE142EBD6F0034716A /* StatsPoster.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

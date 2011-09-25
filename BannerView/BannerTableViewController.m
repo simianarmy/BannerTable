@@ -12,6 +12,8 @@
 #import "BannerXMLParser.h"
 #import "ImageCache.h"
 #import "FileHelpers.h"
+#import "UserStats.h"
+#import "StatsPoster.h"
 
 // These settings modify the look of the banner cells.
 // Use these values if you do not use the cell XIB
@@ -24,6 +26,10 @@
 // server requests.  Smaller values = higher network load on banner server.
 #define kBannerConfigExpirySeconds 86400 // 24 hours
 
+// Set this to the minimum number of stats totals needed before they are 
+// sent to the tracking server
+#define kStatsTotalsPostThreshold 5
+
 // The permanent file for storing the latest banner config download date
 static NSString *const BannerConfigFile =
     @"BannerConfigDate.info";
@@ -33,20 +39,43 @@ static NSString *const BannerConfigFile =
 static NSString *const BannerDataAPIURL = 
     @"http://sportfanapi.local/xml/banners.xml";
 
+// The stats tracking API endpoint
+static NSString *const StatsTrackingScriptURL = 
+    @"http://sportfanapi.local/rest/ustats";
+
+// Debug settings only below
+#define FORCE_CONFIG_REFRESH    1
+
 @interface BannerTableViewController ()
 - (void)startIconDownload:(Banner *)banner forIndexPath:(NSIndexPath *)indexPath;
 - (void)handleLoadError:(NSString *)errorMessage;
 - (BOOL)bannerConfigurationDidExpire;
 - (NSDate *)bannersConfigurationDate;
 - (void)bannersConfigurationDate:(NSDate *)date;
+- (void)submitUserStats;
+- (void)archiveBanners;
+- (void)archiveStats;
+- (void)didFinishPosting;
+- (void)postErrorOccurred:(NSError *)error;
 @end
 
 @implementation BannerTableViewController
 @synthesize tvCell;
+@synthesize userStats;
 @synthesize banners;
 @synthesize imageDownloadsInProgress;
 @synthesize xmlData;
 @synthesize connectionInProgress;
+
++ (NSString *)bannersConfigurationPath
+{
+    return pathInDocumentDirectory(@"Banners.data");
+}
+
++ (NSString *)statsArchivePath
+{
+    return pathInDocumentDirectory(@"Stats.data");
+}
 
 // Use plain initializer to use UITableViewStylePlain table view style
 - (id)init
@@ -91,6 +120,7 @@ static NSString *const BannerDataAPIURL =
     [imageDownloadsInProgress release];
     [connectionInProgress release];
     [xmlData release];
+    [userStats release];
     
     [super dealloc];
 }
@@ -135,6 +165,41 @@ static NSString *const BannerDataAPIURL =
     return [lastSaved compare:[NSDate dateWithTimeIntervalSinceNow:-kBannerConfigExpirySeconds]] == NSOrderedAscending;
 }
 
+// Sends user usage stats to tracking server
+- (void)submitUserStats
+{
+    StatsPoster *poster = [[StatsPoster alloc] initWithURL:[NSURL URLWithString:StatsTrackingScriptURL]];
+    [poster postStats:self.userStats delegate:self];
+    [poster release]; // Is this safe?
+}
+
+#pragma mark - Archiving Methods
+
+- (void)archiveData
+{
+    [self archiveBanners];
+    [self archiveStats];
+}
+
+- (void)archiveBanners
+{
+    // Get full path of config archive
+    NSString *bannersPath = [BannerTableViewController bannersConfigurationPath];
+    
+    // Archive banners list to file
+    NSLog(@"Archiving %d banners", [banners count]);
+    [NSKeyedArchiver archiveRootObject:banners toFile:bannersPath];
+}
+
+- (void)archiveStats
+{
+    // Get full path of config archive
+    NSString *archivePath = [BannerTableViewController statsArchivePath];
+    
+    [NSKeyedArchiver archiveRootObject:self.userStats
+                                toFile:archivePath];
+}
+
 #pragma mark - View lifecycle
 
 /*
@@ -148,18 +213,24 @@ static NSString *const BannerDataAPIURL =
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    if (([banners count] == 0) || [self bannerConfigurationDidExpire]) {
+    if (([banners count] == 0) || [self bannerConfigurationDidExpire] || 
+        (FORCE_CONFIG_REFRESH == 1)) {
         [self loadBanners];
     } 
+    // Send user stats now - as good a time as any
+    if ([userStats total] >= kStatsTotalsPostThreshold) {
+        [self submitUserStats];
+    }
     [super viewDidLoad];
 }
 
-/*
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 }
 
+/*
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -228,16 +299,33 @@ static NSString *const BannerDataAPIURL =
     [alertView release];
 }
 
-#pragma mark -
-#pragma mark Table Delegate Methods
+#pragma mark - StatsPoster Delegate Methods
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+// Called by StatsPoster when stats posting operation is complete.  
+- (void)didFinishPosting
+{
+    // Now safe to reset stats
+    [self.userStats reset];
+    
+    // We need to archive stats right away in case program is terminated before we 
+    // can archive again.  Then next unarchive would load old stats causing bad reports.
+    [self archiveStats];
+}
+
+- (void)postErrorOccurred:(NSError *)error
+{
+    NSLog(@"Unexpected error posting stats: %@", [error localizedDescription]);
+}
+
+#pragma mark - Table Delegate Methods
+
+- (CGFloat)tableView:(UITableView *)tableView 
+heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return kCustomRowHeight;
 }
 
-#pragma mark - 
-#pragma mark UITableView Data Source Methods
+#pragma mark - UITableView Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
@@ -357,10 +445,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     NSLog(@"Banner clicked with target: %@", [[banner clickTargetURL] absoluteURL]);
     [tableView deselectRowAtIndexPath:indexPath
                              animated:YES];
+    
+    // Save click to stats
+    [self.userStats didClickTableCell];
+    // And archive stats to ensure accurate counts in case of unexpected app termination
+    [self archiveStats];
+                               
+    // Launch safari or itunes or...
+    [[UIApplication sharedApplication] openURL:[banner clickTargetURL]];
 }
 
-#pragma mark - 
-#pragma mark NSURLConnection delegate methods
+#pragma mark - NSURLConnection delegate methods
 
 - (void)handleError:(NSError *)error
 {
@@ -415,8 +510,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     self.xmlData = nil;
 }
 
-#pragma mark -
-#pragma mark Table cell image support
+#pragma mark - Table cell image support
 
 - (void)startIconDownload:(Banner *)banner forIndexPath:(NSIndexPath *)indexPath
 {
@@ -465,8 +559,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 
-#pragma mark -
-#pragma mark Deferred image loading (UIScrollViewDelegate)
+#pragma mark - Deferred image loading (UIScrollViewDelegate)
 
 - (void)downloadCompleted:(NSNotification *)notification
 {
